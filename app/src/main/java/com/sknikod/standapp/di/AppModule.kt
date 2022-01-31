@@ -2,6 +2,10 @@ package com.sknikod.standapp.di
 
 import com.sknikod.standapp.data.remote.StandappApi
 import com.sknikod.standapp.data.remote.repository.StandappRepositoryImpl
+import com.sknikod.standapp.domain.use_case.GetArticle
+import com.sknikod.standapp.domain.use_case.GetArticles
+import com.sknikod.standapp.domain.use_case.GetProjects
+import com.sknikod.standapp.domain.use_case.GetProject
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +34,24 @@ object AppModule {
     ):StandappRepositoryImpl{
         return StandappRepositoryImpl(api)
     }
-
+    @Singleton
+    @Provides
+    fun provideGetProjectUserCase(repo:StandappRepositoryImpl):GetProject{
+        return GetProject(repo)
+    }
+    @Singleton
+    @Provides
+    fun provideGetProjectsUserCase(repo:StandappRepositoryImpl):GetProjects{
+        return GetProjects(repo)
+    }
+    @Singleton
+    @Provides
+    fun provideGetArticlesUserCase(repo:StandappRepositoryImpl): GetArticles {
+        return GetArticles(repo)
+    }
+    @Singleton
+    @Provides
+    fun provideGetArticleUserCase(repo:StandappRepositoryImpl): GetArticle {
+        return GetArticle(repo)
+    }
 }

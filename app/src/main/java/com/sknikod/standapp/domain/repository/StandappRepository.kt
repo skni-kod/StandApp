@@ -1,14 +1,16 @@
 package com.sknikod.standapp.domain.repository
 
+import com.sknikod.standapp.domain.model.ArticleItem
 import com.sknikod.standapp.domain.model.ProjectItem
-import com.sknikod.standapp.domain.model.ProjectList
 import com.sknikod.standapp.util.NetworkResult
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 abstract class StandappRepository {
     abstract suspend fun getProject(id:Int?=null):NetworkResult<ProjectItem>
-    abstract fun getProjects(): Flow<NetworkResult<ProjectList>>
+    abstract suspend fun getProjects(): NetworkResult<List<ProjectItem>>
+    abstract suspend fun getArticles():  NetworkResult<List<ArticleItem>>
+    abstract suspend fun getArticle(id:Int?=null): NetworkResult<ArticleItem>
+
     suspend fun <T> apiCall(apiCall: suspend () -> Response<T>): NetworkResult<T> {
         try {
             val response = apiCall()

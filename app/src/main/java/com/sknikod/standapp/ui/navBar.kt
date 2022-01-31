@@ -23,6 +23,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
+import com.sknikod.standapp.ui.projects.ProjectsScreen
 import com.sknikod.standapp.util.SpecifedBottomNavigationItem
 
 @Composable
@@ -48,7 +49,7 @@ fun Navigation(navController: NavHostController){
             }
         }
         composable("projects"){
-
+            ProjectsScreen()
         }
         composable("projects/{projectId}",
             arguments = listOf(
