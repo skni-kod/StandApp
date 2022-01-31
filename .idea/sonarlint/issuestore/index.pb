@@ -1,0 +1,27 @@
+
+h
+8app/src/main/java/com/sknikod/standapp/ui/theme/Color.kt,c/d/cd9164485b3ad9457ca160424b62b8ee8ff34338
+g
+7app/src/main/java/com/sknikod/standapp/ui/theme/Type.kt,c/c/cc7221d48bbd1a8ac6267a0826c5e7238686dd11
+h
+8app/src/main/java/com/sknikod/standapp/ui/theme/Theme.kt,d/9/d9c823d9bc1519043948f2877d74f607ed39057c
+h
+8app/src/main/java/com/sknikod/standapp/ui/theme/Shape.kt,e/1/e17bbab02e0b9558228a54c23b6b8d52176ec697
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+c
+3app/src/main/java/com/sknikod/standapp/ui/navBar.kt,d/7/d79a5c8ddcf48a8c4ad53de1e835dc1e3a92fef1
+n
+>app/src/main/java/com/sknikod/standapp/domain/model/Profile.kt,f/0/f0de8e3ced46853640a01b63f359605e3b5ef1cf
+m
+=app/src/main/java/com/sknikod/standapp/domain/model/Author.kt,e/0/e083254b786bfea3bd0b8d13eb6f2dd94755c9f4
+n
+>app/src/main/java/com/sknikod/standapp/domain/model/Creator.kt,f/e/fed292e72a3c2c60bd08b92dcb6d4f90f788c1de
+r
+Bapp/src/main/java/com/sknikod/standapp/domain/model/ProjectList.kt,1/3/13d8842f5d54ec7a95deb51ba763c8f0620a4350
+r
+Bapp/src/main/java/com/sknikod/standapp/domain/model/ProjectItem.kt,2/6/26fee2f40452bd2f5014aca58d81583983b31a7d
+m
+=app/src/main/java/com/sknikod/standapp/StandappApplication.kt,6/d/6d17b4b3b61d5723ae95132f09a478c1139443e7
+x
+Happ/src/androidTest/java/com/sknikod/standapp/ExampleInstrumentedTest.kt,8/3/83478ca06c4b71f5e48d7e1511f016505fdf68fa
