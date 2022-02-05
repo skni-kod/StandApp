@@ -14,8 +14,14 @@ n
 m
 =app/src/main/java/com/sknikod/standapp/domain/model/Author.kt,e/0/e083254b786bfea3bd0b8d13eb6f2dd94755c9f4
 r
-Bapp/src/main/java/com/sknikod/standapp/domain/model/ProjectList.kt,1/3/13d8842f5d54ec7a95deb51ba763c8f0620a4350
-r
 Bapp/src/main/java/com/sknikod/standapp/domain/model/ProjectItem.kt,2/6/26fee2f40452bd2f5014aca58d81583983b31a7d
 x
 Happ/src/androidTest/java/com/sknikod/standapp/ExampleInstrumentedTest.kt,8/3/83478ca06c4b71f5e48d7e1511f016505fdf68fa
+i
+9app/src/test/java/com/sknikod/standapp/ExampleUnitTest.kt,0/f/0f53b1176dbc2d522e5e223ad986e834a450ee45
+n
+>app/src/main/java/com/sknikod/standapp/domain/model/Creator.kt,f/e/fed292e72a3c2c60bd08b92dcb6d4f90f788c1de
+r
+Bapp/src/main/java/com/sknikod/standapp/domain/model/ArticleItem.kt,4/c/4ca7e0059f0ce37f8a066986f1c57d8da541ebd0
+u
+Eapp/src/main/java/com/sknikod/standapp/domain/use_case/GetArticles.kt,b/c/bc4afa45e664e751c8117e500780c0094a15f732

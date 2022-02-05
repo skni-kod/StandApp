@@ -1,39 +1,56 @@
 package com.sknikod.standapp.ui.projects
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+import android.util.Log
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sknikod.standapp.data.remote.repository.StandappRepositoryImpl;
-import com.sknikod.standapp.domain.model.ProjectItem
+
 import com.sknikod.standapp.domain.use_case.GetProjects
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import com.sknikod.standapp.util.NetworkResult
+
+
 
 @HiltViewModel
 class ProjectsViewModel @Inject constructor(
     private val projects: GetProjects
 ): ViewModel()
 {
-    private val _projectsState = mutableStateOf(ProjectUiState())
-    val projectsState: State<ProjectUiState> = _projectsState
+    private val _projectsState = MutableStateFlow(ProjectUiState())
+    val projectsState: StateFlow<ProjectUiState> = _projectsState
 
     private var currentJob: Job? = null
-    fun load(){
-        _projectsState.value=projectsState.value.copy(
-            loading=true)
+    fun loadData() {
+        _projectsState.value = projectsState.value.copy(
+            loading = true
+        )
         currentJob = viewModelScope.launch {
-            val result=projects()
-            _projectsState.value=projectsState.value.copy(
-                dataToDisplayOnScreen = result.data ?: emptyList(),
-                loading = false
-            )
+            when (val result = projects()) {
+                is NetworkResult.Success -> {
+                    Log.e("Test", "test1");
+                    _projectsState.value = projectsState.value.copy(
+                        dataToDisplayOnScreen = result.data ?: emptyList(),
+                        loading = false
+                    )
+
+                }
+                else -> {Log.e("Test", result.exception.toString())
+                    _projectsState.value = projectsState.value.copy(
+                        dataToDisplayOnScreen = result.data ?: emptyList(),
+                        loading = false
+                    )
+                }
+
+
+            }
+
         }
-
     }
-
 }

@@ -38,8 +38,7 @@ fun Navigation(navController: NavHostController){
         composable("articles"){
 
         }
-        composable("articles/{articleId}",
-            arguments = listOf(
+        composable("articles/{articleId}",arguments = listOf(
                 navArgument("articleId"){
                     type= NavType.IntType
                 })
@@ -51,8 +50,7 @@ fun Navigation(navController: NavHostController){
         composable("projects"){
             ProjectsScreen()
         }
-        composable("projects/{projectId}",
-            arguments = listOf(
+        composable("projects/{projectId}", arguments = listOf(
                 navArgument("projectId"){
                     type= NavType.IntType
                 }

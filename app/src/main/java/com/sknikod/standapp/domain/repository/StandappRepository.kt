@@ -21,11 +21,11 @@ abstract class StandappRepository {
                 }
             }
             return NetworkResult.Error(data = response.body(),
-                message = "Oops, something went wrong:${response.message()}"
+                exception = Exception("Oops, something went wrong:${response.message()}")
             )
         } catch (e: Exception) {
             return NetworkResult.Error(
-                message = "Oops, something went wrong:${e.message}"
+                exception = Exception("Oops, something went wrong:${e.message}")
             )
         }
     }
