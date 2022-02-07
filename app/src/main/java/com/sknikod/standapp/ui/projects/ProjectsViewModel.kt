@@ -4,6 +4,7 @@ import android.util.Log
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sknikod.standapp.domain.use_case.GetProject
 
 import com.sknikod.standapp.domain.use_case.GetProjects
 
@@ -20,7 +21,8 @@ import com.sknikod.standapp.util.NetworkResult
 
 @HiltViewModel
 class ProjectsViewModel @Inject constructor(
-    private val projects: GetProjects
+    private val projects: GetProjects,
+    private val project: GetProject
 ): ViewModel()
 {
     private val _projectsState = MutableStateFlow(ProjectUiState())
@@ -34,7 +36,7 @@ class ProjectsViewModel @Inject constructor(
         currentJob = viewModelScope.launch {
             when (val result = projects()) {
                 is NetworkResult.Success -> {
-                    Log.e("Test", "test1");
+                    //Log.e("Test", "test1");
                     _projectsState.value = projectsState.value.copy(
                         dataToDisplayOnScreen = result.data ?: emptyList(),
                         loading = false
@@ -44,6 +46,30 @@ class ProjectsViewModel @Inject constructor(
                 else -> {Log.e("Test", result.exception.toString())
                     _projectsState.value = projectsState.value.copy(
                         dataToDisplayOnScreen = result.data ?: emptyList(),
+                        loading = false
+                    )
+                }
+
+
+            }
+
+        }
+    }
+    fun loadSpecifedProject(id:Int){
+        currentJob = viewModelScope.launch {
+            when (val result = project(id)) {
+                is NetworkResult.Success -> {
+                    //Debug
+                    //Log.e("Test", "test21${result.data?.id}");
+                    _projectsState.value = projectsState.value.copy(
+                        dataToDisplayOnScreen =  emptyList(),
+                        loading = false
+                    )
+
+                }
+                else -> {Log.e("Test", result.exception.toString())
+                    _projectsState.value = projectsState.value.copy(
+                        dataToDisplayOnScreen =  emptyList(),
                         loading = false
                     )
                 }

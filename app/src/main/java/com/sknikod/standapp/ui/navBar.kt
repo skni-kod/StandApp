@@ -1,5 +1,6 @@
 package com.sknikod.standapp.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -20,14 +21,17 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
+import androidx.compose.material.ScaffoldState
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import com.sknikod.standapp.ui.projects.ProjectsScreen
+import com.sknikod.standapp.ui.projects.ProjectsScreenItem
 import com.sknikod.standapp.util.SpecifedBottomNavigationItem
 
 @Composable
-fun Navigation(navController: NavHostController){
+fun Navigation(navController: NavHostController,
+               scaffoldState:ScaffoldState){
     NavHost(
         navController=navController,
         "home"
@@ -48,16 +52,17 @@ fun Navigation(navController: NavHostController){
             }
         }
         composable("projects"){
-            ProjectsScreen()
+            ProjectsScreen(navController = navController)
         }
         composable("projects/{projectId}", arguments = listOf(
                 navArgument("projectId"){
                     type= NavType.IntType
                 }
             )){
-            val rememberedId = remember {
-                it.arguments?.getInt("projectId")
-            }
+            ProjectsScreenItem(navController = navController,
+                scaffoldState=scaffoldState)
+            //Debug
+            // Log.e("Test", "test${it.arguments?.getInt("projectId").toString()}")
         }
         composable("user"){
 

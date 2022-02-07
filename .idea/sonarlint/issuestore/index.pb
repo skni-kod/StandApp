@@ -23,5 +23,3 @@ n
 >app/src/main/java/com/sknikod/standapp/domain/model/Creator.kt,f/e/fed292e72a3c2c60bd08b92dcb6d4f90f788c1de
 r
 Bapp/src/main/java/com/sknikod/standapp/domain/model/ArticleItem.kt,4/c/4ca7e0059f0ce37f8a066986f1c57d8da541ebd0
-u
-Eapp/src/main/java/com/sknikod/standapp/domain/use_case/GetArticles.kt,b/c/bc4afa45e664e751c8117e500780c0094a15f732
