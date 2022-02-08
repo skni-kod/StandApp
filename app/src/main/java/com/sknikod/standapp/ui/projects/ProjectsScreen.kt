@@ -1,6 +1,8 @@
 package com.sknikod.standapp.ui.projects
 
+import android.text.Html
 import android.util.Log
+import android.widget.TextView
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,11 +12,18 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.text.HtmlCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun ProjectsScreen(
@@ -22,16 +31,13 @@ fun ProjectsScreen(
     navController: NavController
 ) {
     val int:Boolean=viewModel.projectsState.collectAsState().value.loading
-
-
     LaunchedEffect(key1 = true){
-            viewModel.loadData()
-
+            viewModel.loadProjects()
     }
         Box(
             modifier = Modifier
         ) {SwipeRefresh(        state = rememberSwipeRefreshState(isRefreshing = int),
-            onRefresh = { viewModel.loadData() }){
+            onRefresh = { viewModel.loadProjects() }){
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -47,12 +53,34 @@ fun ProjectsScreen(
                         if(i > 0) {
                             Spacer(modifier = Modifier.height(1.dp))
                         }
-                        Text(text = info.title.toString(),
-                            modifier = Modifier.clickable(
-                            onClick = {
-                                navController.navigate("projects/${info.id.toInt()}")})
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(4.dp)
+                                .clickable(onClick = {
+                                    navController
+                                        .navigate("projects/${info.id.toInt()}")
+                                }),
+                            elevation = 10.dp
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(15.dp)
+                            ) {
+                                Text(
+                                    buildAnnotatedString {
+                                        append("welcome to ")
+                                        withStyle(style = SpanStyle(fontWeight = FontWeight.W900, color = Color(0xFF4552B8))
+                                        ) {
+                                            append("Jetpack Compose Playground")
+                                        }
+                                    }
+                                )
+                                Text(text = info.title.toString())
 
-                        )
+                            }
+                        }
+
+
                     }
                 }
             }
@@ -67,11 +95,15 @@ fun ProjectsScreenItem(
     navController: NavController,
     scaffoldState: ScaffoldState
 ){
+    val text:String=viewModel.infoProject.collectAsState().value.toString()
+
+
     LaunchedEffect(key1 = true){
         navController.currentBackStackEntry?.arguments?.getInt("projectId")
             ?.let { viewModel.loadSpecifedProject(it) }
     }
-    Scaffold(scaffoldState = scaffoldState,topBar ={
+
+    Scaffold(scaffoldState = scaffoldState, bottomBar = {},topBar ={
         TopAppBar(backgroundColor = Color.Transparent, elevation = 0.dp) {
             Row(
                 modifier = Modifier.padding(start = 8.dp)
@@ -86,8 +118,9 @@ fun ProjectsScreenItem(
                 Text(text = "Wstecz")
             }
         }
-    } ) {
+    }) {
     Box{
+        Text(text)
 
     }
     }

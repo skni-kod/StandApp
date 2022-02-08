@@ -7,8 +7,6 @@ h
 8app/src/main/java/com/sknikod/standapp/ui/theme/Theme.kt,d/9/d9c823d9bc1519043948f2877d74f607ed39057c
 h
 8app/src/main/java/com/sknikod/standapp/ui/theme/Shape.kt,e/1/e17bbab02e0b9558228a54c23b6b8d52176ec697
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 n
 >app/src/main/java/com/sknikod/standapp/domain/model/Profile.kt,f/0/f0de8e3ced46853640a01b63f359605e3b5ef1cf
 m

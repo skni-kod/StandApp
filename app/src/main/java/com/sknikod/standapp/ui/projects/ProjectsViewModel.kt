@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import com.sknikod.standapp.util.NetworkResult
-
+import kotlinx.coroutines.flow.update
 
 
 @HiltViewModel
@@ -28,8 +28,11 @@ class ProjectsViewModel @Inject constructor(
     private val _projectsState = MutableStateFlow(ProjectUiState())
     val projectsState: StateFlow<ProjectUiState> = _projectsState
 
+    private val  _infoProject =MutableStateFlow(String())
+    val infoProject: StateFlow<String> = _infoProject
+
     private var currentJob: Job? = null
-    fun loadData() {
+    fun loadProjects() {
         _projectsState.value = projectsState.value.copy(
             loading = true
         )
@@ -61,10 +64,7 @@ class ProjectsViewModel @Inject constructor(
                 is NetworkResult.Success -> {
                     //Debug
                     //Log.e("Test", "test21${result.data?.id}");
-                    _projectsState.value = projectsState.value.copy(
-                        dataToDisplayOnScreen =  emptyList(),
-                        loading = false
-                    )
+                    _infoProject.value=result.data?.text.toString()
 
                 }
                 else -> {Log.e("Test", result.exception.toString())
