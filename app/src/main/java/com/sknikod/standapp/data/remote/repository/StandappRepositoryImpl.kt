@@ -3,6 +3,7 @@ package com.sknikod.standapp.data.remote.repository
 import com.sknikod.standapp.data.remote.StandappApi
 import com.sknikod.standapp.domain.model.ArticleItem
 import com.sknikod.standapp.domain.model.ProjectItem
+import com.sknikod.standapp.domain.model.Section
 import com.sknikod.standapp.domain.repository.StandappRepository
 import com.sknikod.standapp.util.NetworkResult
 import kotlinx.coroutines.CoroutineDispatcher
@@ -27,4 +28,8 @@ class StandappRepositoryImpl @Inject constructor(
 
     override suspend fun getArticle(id: Int?): NetworkResult<ArticleItem>  =withContext(ioDispatcher){
         return@withContext    apiCall { api.getArticle(id) }    }
+
+    override suspend fun getSections(): NetworkResult<List<Section>>  =withContext(ioDispatcher){
+        return@withContext    apiCall { api.getSections() }    }
 }
+

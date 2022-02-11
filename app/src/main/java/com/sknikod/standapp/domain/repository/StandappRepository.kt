@@ -2,6 +2,7 @@ package com.sknikod.standapp.domain.repository
 
 import com.sknikod.standapp.domain.model.ArticleItem
 import com.sknikod.standapp.domain.model.ProjectItem
+import com.sknikod.standapp.domain.model.Section
 import com.sknikod.standapp.util.NetworkResult
 import retrofit2.Response
 
@@ -10,6 +11,7 @@ abstract class StandappRepository {
     abstract suspend fun getProjects(): NetworkResult<List<ProjectItem>>
     abstract suspend fun getArticles():  NetworkResult<List<ArticleItem>>
     abstract suspend fun getArticle(id:Int?=null): NetworkResult<ArticleItem>
+    abstract suspend fun getSections(): NetworkResult<List<Section>>
 
     suspend fun <T> apiCall(apiCall: suspend () -> Response<T>): NetworkResult<T> {
         try {

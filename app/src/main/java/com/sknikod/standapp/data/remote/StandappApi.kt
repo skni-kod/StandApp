@@ -2,6 +2,7 @@ package com.sknikod.standapp.data.remote
 
 import com.sknikod.standapp.domain.model.ProjectItem
 import com.sknikod.standapp.domain.model.ArticleItem
+import com.sknikod.standapp.domain.model.Section
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,6 +16,8 @@ interface StandappApi {
     suspend fun getArticle(@Path("id")id:Int?):Response<ArticleItem>
     @GET("articles")
     suspend fun getArticlesList():Response<List<ArticleItem>>
+    @GET("section")
+    suspend fun getSections():Response<List<Section>>
 
     companion object {
         const val BASE_URL =""

@@ -4,9 +4,12 @@ import android.util.Log
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sknikod.standapp.domain.model.ProjectItem
+import com.sknikod.standapp.domain.model.Section
 import com.sknikod.standapp.domain.use_case.GetProject
 
 import com.sknikod.standapp.domain.use_case.GetProjects
+import com.sknikod.standapp.domain.use_case.GetSections
 
 import javax.inject.Inject;
 
@@ -16,38 +19,41 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import com.sknikod.standapp.util.NetworkResult
-import kotlinx.coroutines.flow.update
 
 
 @HiltViewModel
 class ProjectsViewModel @Inject constructor(
-    private val projects: GetProjects,
-    private val project: GetProject
-): ViewModel()
-{
-    private val _projectsState = MutableStateFlow(ProjectUiState())
-    val projectsState: StateFlow<ProjectUiState> = _projectsState
+    private val useCaseProjects: GetProjects,
+    private val useCaseProject: GetProject,
+    private val useCaseSections: GetSections
+): ViewModel() {
+    private val _dataOfProjects = MutableStateFlow(ProjectUiState<List<ProjectItem>>(emptyList()))
+    val dataOfProjects: StateFlow<ProjectUiState<List<ProjectItem>>> = _dataOfProjects
 
-    private val  _infoProject =MutableStateFlow(String())
-    val infoProject: StateFlow<String> = _infoProject
+    private val _infoProject = MutableStateFlow(ProjectUiState(""))
+    val infoProject: StateFlow<ProjectUiState<String>> = _infoProject
+
+    private val _dataOfSections = MutableStateFlow(ProjectUiState<List<Section>>(emptyList()))
+    val dataOfSections: StateFlow<ProjectUiState<List<Section>>> = _dataOfSections
 
     private var currentJob: Job? = null
     fun loadProjects() {
-        _projectsState.value = projectsState.value.copy(
+        _dataOfProjects.value = dataOfProjects.value.copy(
             loading = true
         )
         currentJob = viewModelScope.launch {
-            when (val result = projects()) {
+            when (val result = useCaseProjects()) {
                 is NetworkResult.Success -> {
                     //Log.e("Test", "test1");
-                    _projectsState.value = projectsState.value.copy(
+                    _dataOfProjects.value = dataOfProjects.value.copy(
                         dataToDisplayOnScreen = result.data ?: emptyList(),
                         loading = false
                     )
 
                 }
-                else -> {Log.e("Test", result.exception.toString())
-                    _projectsState.value = projectsState.value.copy(
+                else -> {
+                    Log.e("Test", result.exception.toString())
+                    _dataOfProjects.value = dataOfProjects.value.copy(
                         dataToDisplayOnScreen = result.data ?: emptyList(),
                         loading = false
                     )
@@ -58,18 +64,29 @@ class ProjectsViewModel @Inject constructor(
 
         }
     }
-    fun loadSpecifedProject(id:Int){
+
+    fun loadTheProject(id: Int) {
+        /* _infoProject.value= _dataOfProjects.value
+            .dataToDisplayOnScreen.elementAt(id).toString()*/
+        _infoProject.value = infoProject.value.copy(
+            loading = true
+        )
+
         currentJob = viewModelScope.launch {
-            when (val result = project(id)) {
+            when (val result = useCaseProject(id)) {
                 is NetworkResult.Success -> {
-                    //Debug
-                    //Log.e("Test", "test21${result.data?.id}");
-                    _infoProject.value=result.data?.text.toString()
+                    _infoProject.value = infoProject.value.copy(
+                        dataToDisplayOnScreen = result.data?.text ?: "",
+                        loading = false
+                    )
+
 
                 }
-                else -> {Log.e("Test", result.exception.toString())
-                    _projectsState.value = projectsState.value.copy(
-                        dataToDisplayOnScreen =  emptyList(),
+                else -> {
+                    //TODO
+                    // ADD ERROR CATCH EXAMPLE SNCAK
+                    _infoProject.value = infoProject.value.copy(
+                        dataToDisplayOnScreen = result.data?.text ?: "",
                         loading = false
                     )
                 }
@@ -77,6 +94,35 @@ class ProjectsViewModel @Inject constructor(
 
             }
 
+        }
+    }
+
+    fun loadSections() {
+        _dataOfSections.value = dataOfSections.value.copy(
+            loading = true
+        )
+
+        currentJob = viewModelScope.launch {
+            when (val result = useCaseSections()) {
+                is NetworkResult.Success -> {
+                    _dataOfSections.value = dataOfSections.value.copy(
+                        dataToDisplayOnScreen = result.data ?: emptyList(),
+                        loading = false
+                    )
+
+
+                }
+                else -> {
+                    //TODO
+                    // ADD ERROR CATCH EXAMPLE SNCAK
+                    _dataOfSections.value = dataOfSections.value.copy(
+                        dataToDisplayOnScreen = result.data ?: emptyList(),
+                        loading = false
+                    )
+                }
+
+
+            }
         }
     }
 }

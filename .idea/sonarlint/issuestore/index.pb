@@ -1,6 +1,4 @@
 
-h
-8app/src/main/java/com/sknikod/standapp/ui/theme/Color.kt,c/d/cd9164485b3ad9457ca160424b62b8ee8ff34338
 g
 7app/src/main/java/com/sknikod/standapp/ui/theme/Type.kt,c/c/cc7221d48bbd1a8ac6267a0826c5e7238686dd11
 h
@@ -11,8 +9,6 @@ n
 >app/src/main/java/com/sknikod/standapp/domain/model/Profile.kt,f/0/f0de8e3ced46853640a01b63f359605e3b5ef1cf
 m
 =app/src/main/java/com/sknikod/standapp/domain/model/Author.kt,e/0/e083254b786bfea3bd0b8d13eb6f2dd94755c9f4
-r
-Bapp/src/main/java/com/sknikod/standapp/domain/model/ProjectItem.kt,2/6/26fee2f40452bd2f5014aca58d81583983b31a7d
 x
 Happ/src/androidTest/java/com/sknikod/standapp/ExampleInstrumentedTest.kt,8/3/83478ca06c4b71f5e48d7e1511f016505fdf68fa
 i
