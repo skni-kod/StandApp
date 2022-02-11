@@ -21,3 +21,7 @@ n
 >app/src/main/java/com/sknikod/standapp/domain/model/Creator.kt,f/e/fed292e72a3c2c60bd08b92dcb6d4f90f788c1de
 r
 Bapp/src/main/java/com/sknikod/standapp/domain/model/ArticleItem.kt,4/c/4ca7e0059f0ce37f8a066986f1c57d8da541ebd0
+@
+app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
