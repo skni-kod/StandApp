@@ -3,6 +3,7 @@
     package="com.sknikod.standapp.android">
 
     <application
+        android:name=".StandappApplication"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:supportsRtl="true"
