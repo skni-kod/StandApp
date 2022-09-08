@@ -1,13 +1,17 @@
 package com.sknikod.standapp.domain.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Gallery(
-    val gallery_visibility: Boolean,
+    @SerialName("gallery_visibility")
+    val galleryVisibility: Boolean,
     val id: Int,
     val image: String,
-    val text_visibility: Boolean,
+    @SerialName("text_visibility")
+    val textVisibility: Boolean,
     val thumbnail: String,
-    val thumbnail_visibility: Boolean
+    @SerialName("thumbnail_visibility")
+    val thumbnailVisibility: Boolean
 )

@@ -14,4 +14,5 @@ fun Const.ApiUrl.comments() = this.url + "comments/"
 fun Const.ApiUrl.articles() = this.url + "articles/"
 fun Const.ApiUrl.groups() = this.url + "groups/"
 fun Const.ApiUrl.users() = this.url + "users/"
+fun Const.ApiUrl.image(path: String) = this.url + path
 fun Url.specified(id: Int) = this + "$id/"

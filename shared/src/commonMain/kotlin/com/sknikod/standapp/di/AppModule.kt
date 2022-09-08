@@ -12,9 +12,8 @@ import org.koin.dsl.module
 
 object AppModule {
     private val client = module {
-        factoryOf(::RestApiClientKtorImpl) {
-            bind<RestApiClient>()
-        }
+
+        factory { RestApiClientKtorImpl() as RestApiClient}
         factory { RepositoryImpl(get()) as Repository}
     }
     val modules = listOf<Module>(client)

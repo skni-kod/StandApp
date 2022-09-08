@@ -1,20 +1,22 @@
 package com.sknikod.standapp.domain.model
 
 import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
-data class Project(
+data class Article(
+    val alias: String,
     val authors: List<Author>,
+    @SerialName("comments_number")
+    val commentsNumber: Int,
     @SerialName("creation_date")
     val creationDate: String,
     val creator: Creator,
     val gallery: List<Gallery>,
+    val group: String,
     val id: Int,
-    val links: List<String?>,
+    val links: List<String>,
     @SerialName("publication_date")
     val publicationDate: String,
-    val section: Section,
+    val tags: List<Tag>,
     val text: String,
     val title: String
 )

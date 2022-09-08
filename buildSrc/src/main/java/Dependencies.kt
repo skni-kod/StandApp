@@ -20,6 +20,7 @@ object Deps {
         const val darwin = "io.ktor:ktor-client-darwin:$ktorVersion"
         const val negotiation = "io.ktor:ktor-client-content-negotiation:$ktorVersion"
         const val json = "io.ktor:ktor-serialization-kotlinx-json:$ktorVersion"
+        const val test ="io.ktor:ktor-client-mock:$ktorVersion"
     }
     object KotlinSerialization {
         const val core = "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerialization"

@@ -12,7 +12,11 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
+    jvm {
+        testRuns["test"].executionTask.configure {
+           useJUnitPlatform()
+        }
+    }
     cocoapods {
 
         summary = "Some description for the Shared Module"
@@ -46,7 +50,12 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
+                with(Deps.Ktor) {
+                    implementation(test)
+                }
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
                 implementation(kotlin("test"))
+                implementation("io.mockk:mockk-common:1.12.5")
             }
         }
         val androidMain by getting {
