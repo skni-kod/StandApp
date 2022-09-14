@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/projects">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/projects"
+    app:startDestination="@id/projectItem">
 
+    <fragment
+        android:id="@+id/listOfProjects"
+        android:name="com.sknikod.standapp.android.ui.ListOfProjectsFragment"
+        android:label="fragment_list_of_projects"
+        tools:layout="@layout/fragment_list_of_projects" >
+        <action
+            android:id="@+id/action_listOfProjects_to_projectItem"
+            app:destination="@id/projectItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectItem"
+        android:name="com.sknikod.standapp.android.ui.ProjectItemFragment"
+        android:label="fragment_project_item"
+        tools:layout="@layout/fragment_project_item" />
 </navigation>

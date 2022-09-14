@@ -13,7 +13,7 @@ import com.sknikod.standapp.domain.repository.Repository
 import com.sknikod.standapp.uti.onSuccess
 import org.koin.android.ext.android.inject
 
-class ProjectItem : Fragment() {
+class ProjectItemFragment : Fragment() {
     private val greeting: Repository by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

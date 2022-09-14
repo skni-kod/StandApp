@@ -3,7 +3,6 @@ package com.sknikod.standapp
 import com.sknikod.standapp.data.client.RestApiClientKtorImpl
 import com.sknikod.standapp.data.repository.RepositoryImpl
 import io.ktor.client.engine.mock.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
 import kotlinx.coroutines.test.runTest

@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="menu_title_news">Aktualności</string>
+    <string name="menu_title_articles">Artykuły</string>
+    <string name="menu_title_projects">Projekty</string>
+    <string name="menu_title_account">Konto</string>
+    <string name="menu_cd_news">Aktualności</string>
+    <string name="menu_cd_articles">Artykuły</string>
+    <string name="menu_cd_projects">Projekty</string>
+    <string name="menu_cd_account">Konto</string>
+
 </resources>

@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_menu">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/projects">
+
+
+    <include app:graph="@navigation/projects" />
+    <fragment
+        android:id="@+id/listOfArticles"
+        android:name="com.sknikod.standapp.android.ui.ListOfArticlesFragment"
+        android:label="fragment_list_of_articles"
+        tools:layout="@layout/fragment_list_of_articles" >
+        <action
+            android:id="@+id/action_listOfArticles_to_articleItem"
+            app:destination="@id/articleItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleItem"
+        android:name="com.sknikod.standapp.android.ui.ArticleItemFragment"
+        android:label="fragment_article_item"
+        tools:layout="@layout/fragment_article_item" />
+    <fragment
+        android:id="@+id/listOfNews"
+        android:name="com.sknikod.standapp.android.ui.ListOfNewsFragment"
+        android:label="fragment_list_of_news"
+        tools:layout="@layout/fragment_list_of_news" >
+        <action
+            android:id="@+id/action_listOfNews_to_articleItem"
+            app:destination="@id/articleItem" />
+    </fragment>
+    <include app:graph="@navigation/account" />
 
 </navigation>
