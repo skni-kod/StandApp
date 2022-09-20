@@ -9,8 +9,24 @@
 import SwiftUI
 
 struct ListOfNewsView: View {
+    let hardwareScreenSize = UIScreen.main.bounds.size
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Rectangle()
+                .fill(Color.blue).ignoresSafeArea()
+               
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                .frame(width: hardwareScreenSize.width*0.80 )
+                   .padding()
+                   .background(Color.white)
+                   .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                   .padding()
+                   .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                   
+            
+            
+    
+        }
     }
 }
 

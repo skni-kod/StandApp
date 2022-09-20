@@ -5,10 +5,13 @@ import shared
 struct iOSApp: App {
     init(){
         shared.KoinWrapper.companion.doInitKoin()
+        //UITableView.appearance().backgroundColor = .cyan
+  
     }
 	var body: some Scene {
 		WindowGroup {
-			NavigationView()
+            NavigationTabView()
 		}
 	}
 }
+

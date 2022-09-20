@@ -7,15 +7,23 @@
 //
 
 import SwiftUI
-
+import WebKit
+import SwiftUI
+import shared
 struct ProjectView: View {
+    let data:Project
+    init(data:Project){
+        self.data=data
+        UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Arial", size: 16)!]
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HTMLStringView(htmlContent: "<p>\(data.text)</p>").navigationBarTitle(  data.title , displayMode: .inline )
     }
 }
 
 struct ProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView()
+        Text("test")
+       // ProjectView(text:"sdfds")
     }
 }

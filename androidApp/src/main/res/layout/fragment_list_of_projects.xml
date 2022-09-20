@@ -5,7 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.ListOfProjectsFragment">
-
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProjects"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

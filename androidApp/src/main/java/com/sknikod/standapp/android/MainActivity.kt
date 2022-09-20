@@ -1,18 +1,12 @@
 package com.sknikod.standapp.android
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.webkit.WebView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.sknikod.standapp.domain.repository.Repository
-import com.sknikod.standapp.uti.onSuccess
-import org.koin.android.ext.android.inject
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +19,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottom_navigation)
             .setupWithNavController(navController)
 
+
+    }
+
+    override fun setTitle(title: CharSequence?) {
+        findViewById<TextView>(R.id.title).text=title
+    }
+    fun setViabilityTitle(boolean: Boolean){
+        if(boolean)  findViewById<TextView>(R.id.title).visibility= View.VISIBLE
+        else findViewById<TextView>(R.id.title).visibility= View.GONE
 
     }
 

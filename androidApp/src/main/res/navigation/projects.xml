@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/projects"
-    app:startDestination="@id/projectItem">
+    app:startDestination="@id/listOfProjects">
 
     <fragment
         android:id="@+id/listOfProjects"
@@ -18,5 +18,10 @@
         android:id="@+id/projectItem"
         android:name="com.sknikod.standapp.android.ui.ProjectItemFragment"
         android:label="fragment_project_item"
-        tools:layout="@layout/fragment_project_item" />
+        tools:layout="@layout/fragment_project_item" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

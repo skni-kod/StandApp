@@ -11,27 +11,45 @@ import shared
 
 @MainActor
 struct ListOfProjectsView: View {
+    
     // meybe transfer to usecase?
     var getProjects = {
-         try await shared.KoinWrapper().greet()
-     }
+        try await shared.KoinWrapper().greet()
+    }
     @State var listOfProjects : [Project] = []
     var body: some View {
-        HStack{
-           
-            List(listOfProjects , id: \.id){ data in
-                    Text("\(data.title)")
+        NavigationView{
+            
+            
+            
+            List(){
+                
+                ForEach(listOfProjects , id: \.self){ data in
+                    NavigationLink(destination: ProjectView(data: data)) {
+                        VStack(){
+                            
+                            CardProjectView(title: data.title, sectionName: data.section.name, text: data.text)
+                        }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                        
+                    }
+                }
                 
             }
-            //Text(listOfProjects?[0].title ?? "test")
-        }.onAppear{
+            .listStyle(InsetListStyle())
+            .navigationTitle( "Nasze projekty"  )
+            
+        }
+        .navigationViewStyle(DefaultNavigationViewStyle())
+        .onAppear{
+            
             Task{
-              try await getProjects().onSuccess(action:{
-                  value in listOfProjects = value as? [Project] ?? []
-                  
+                try await getProjects().onSuccess(action:{
+                    value in listOfProjects = value as? [Project] ?? []
+                    
                 })
             }
         }
+        
     }
 }
 

@@ -11,14 +11,16 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		5B90C7F983292E4B4A201868 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759D536E1CBB10AAB6EE635 /* Pods_iosApp.framework */; };
-		6FDFBFA928D1A4C200D21379 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFA828D1A4C200D21379 /* NavigationView.swift */; };
+		6F15E1A228D9B32800943E59 /* CardProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F15E1A128D9B32800943E59 /* CardProjectView.swift */; };
+		6FC328C328D9DC8600A8E70B /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC328C228D9DC8600A8E70B /* HTMLStringView.swift */; };
+		6FC328C528D9DCCF00A8E70B /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC328C428D9DCCF00A8E70B /* ColorExt.swift */; };
+		6FDFBFA928D1A4C200D21379 /* NavigationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFA828D1A4C200D21379 /* NavigationTabView.swift */; };
 		6FDFBFAB28D1A4E800D21379 /* ListOfProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFAA28D1A4E800D21379 /* ListOfProjectsView.swift */; };
 		6FDFBFAD28D1A4F700D21379 /* ListOfNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFAC28D1A4F700D21379 /* ListOfNewsView.swift */; };
 		6FDFBFAF28D1A50600D21379 /* ListOfArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFAE28D1A50600D21379 /* ListOfArticlesView.swift */; };
 		6FDFBFB128D1A51500D21379 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFB028D1A51500D21379 /* UserView.swift */; };
 		6FDFBFB428D1A55800D21379 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFB328D1A55800D21379 /* ArticleView.swift */; };
 		6FDFBFB628D1A56600D21379 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFB528D1A56600D21379 /* ProjectView.swift */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +30,10 @@
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		5759D536E1CBB10AAB6EE635 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D73350B1BF2E200094FEBCE /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
-		6FDFBFA828D1A4C200D21379 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		6F15E1A128D9B32800943E59 /* CardProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardProjectView.swift; sourceTree = "<group>"; };
+		6FC328C228D9DC8600A8E70B /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
+		6FC328C428D9DCCF00A8E70B /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		6FDFBFA828D1A4C200D21379 /* NavigationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabView.swift; sourceTree = "<group>"; };
 		6FDFBFAA28D1A4E800D21379 /* ListOfProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProjectsView.swift; sourceTree = "<group>"; };
 		6FDFBFAC28D1A4F700D21379 /* ListOfNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfNewsView.swift; sourceTree = "<group>"; };
 		6FDFBFAE28D1A50600D21379 /* ListOfArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfArticlesView.swift; sourceTree = "<group>"; };
@@ -36,7 +41,6 @@
 		6FDFBFB328D1A55800D21379 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		6FDFBFB528D1A56600D21379 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +62,23 @@
 				058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6F15E1A028D9B30300943E59 /* ListOfProjectView */ = {
+			isa = PBXGroup;
+			children = (
+				6F15E1A128D9B32800943E59 /* CardProjectView.swift */,
+			);
+			path = ListOfProjectView;
+			sourceTree = "<group>";
+		};
+		6F15E1A328D9DBB000943E59 /* uti */ = {
+			isa = PBXGroup;
+			children = (
+				6FC328C228D9DC8600A8E70B /* HTMLStringView.swift */,
+				6FC328C428D9DCCF00A8E70B /* ColorExt.swift */,
+			);
+			path = uti;
 			sourceTree = "<group>";
 		};
 		6FDFBFA328D1A41100D21379 /* store */ = {
@@ -91,7 +112,7 @@
 		6FDFBFA728D1A48500D21379 /* navigation */ = {
 			isa = PBXGroup;
 			children = (
-				6FDFBFA828D1A4C200D21379 /* NavigationView.swift */,
+				6FDFBFA828D1A4C200D21379 /* NavigationTabView.swift */,
 			);
 			path = navigation;
 			sourceTree = "<group>";
@@ -99,6 +120,7 @@
 		6FDFBFB228D1A51B00D21379 /* part */ = {
 			isa = PBXGroup;
 			children = (
+				6F15E1A028D9B30300943E59 /* ListOfProjectView */,
 				6FDFBFB328D1A55800D21379 /* ArticleView.swift */,
 				6FDFBFB528D1A56600D21379 /* ProjectView.swift */,
 			);
@@ -126,10 +148,10 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				6F15E1A328D9DBB000943E59 /* uti */,
 				6FDFBFA528D1A47400D21379 /* views */,
 				6FDFBFA328D1A41100D21379 /* store */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
@@ -250,14 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F15E1A228D9B32800943E59 /* CardProjectView.swift in Sources */,
+				6FC328C528D9DCCF00A8E70B /* ColorExt.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				6FC328C328D9DC8600A8E70B /* HTMLStringView.swift in Sources */,
 				6FDFBFAB28D1A4E800D21379 /* ListOfProjectsView.swift in Sources */,
-				6FDFBFA928D1A4C200D21379 /* NavigationView.swift in Sources */,
+				6FDFBFA928D1A4C200D21379 /* NavigationTabView.swift in Sources */,
 				6FDFBFB428D1A55800D21379 /* ArticleView.swift in Sources */,
 				6FDFBFAD28D1A4F700D21379 /* ListOfNewsView.swift in Sources */,
 				6FDFBFAF28D1A50600D21379 /* ListOfArticlesView.swift in Sources */,
 				6FDFBFB628D1A56600D21379 /* ProjectView.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				6FDFBFB128D1A51500D21379 /* UserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

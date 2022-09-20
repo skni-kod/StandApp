@@ -6,8 +6,18 @@
     android:layout_height="match_parent"
     android:id="@+id/main_view"
     android:orientation="vertical"
-    android:gravity="bottom"
     tools:context=".MainActivity">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="You have no calls for "
+        android:alpha="0.8"
+        android:visibility="gone"
+        android:textSize="25sp" />
 
     <androidx.fragment.app.FragmentContainerView
         android:name="androidx.navigation.fragment.NavHostFragment"

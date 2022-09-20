@@ -1,7 +1,7 @@
 package com.sknikod.standapp
 
 import com.sknikod.standapp.data.client.RestApiClientKtorImpl
-import com.sknikod.standapp.data.repository.RepositoryImpl
+import com.sknikod.standapp.data.repository.RepositoryProjectImpl
 import io.ktor.client.engine.mock.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
@@ -110,7 +110,7 @@ internal class RepositoryImplTest {
             )
         }
         val client = RestApiClientKtorImpl(mockClient, mockClientToken)
-        val repositoryImpl = RepositoryImpl(client)
-        assertEquals(true, repositoryImpl.getListOfProjects().value?.isNotEmpty())
+        val repositoryProjectImpl = RepositoryProjectImpl(client)
+        assertEquals(true, repositoryProjectImpl.getListOfProjects().value?.isNotEmpty())
     }
 }
