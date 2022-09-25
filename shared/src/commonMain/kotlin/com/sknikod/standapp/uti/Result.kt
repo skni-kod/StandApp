@@ -2,6 +2,8 @@ package com.sknikod.standapp.uti
 
 // T- type data E- type error
 sealed class Result<T>(val value: T?) {
+    class Init<T> : Result<T>(null)
+    class Loading<T> : Result<T>(null)
     class Success<T>(value: T) : Result<T>(value)
     class FailureFetch<T, E>(val error: E) : Result<T>(null)
     class Error<T>(val throwable: Throwable) : Result<T>(null)

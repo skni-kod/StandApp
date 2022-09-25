@@ -9,7 +9,7 @@
     <include app:graph="@navigation/projects" />
     <fragment
         android:id="@+id/listOfArticles"
-        android:name="com.sknikod.standapp.android.ui.ListOfArticlesFragment"
+        android:name="com.sknikod.standapp.android.ui.articlesNews.ListOfArticlesFragment"
         android:label="fragment_list_of_articles"
         tools:layout="@layout/fragment_list_of_articles" >
         <action
@@ -18,12 +18,12 @@
     </fragment>
     <fragment
         android:id="@+id/articleItem"
-        android:name="com.sknikod.standapp.android.ui.ArticleItemFragment"
+        android:name="com.sknikod.standapp.android.ui.articlesNews.ArticleItemFragment"
         android:label="fragment_article_item"
         tools:layout="@layout/fragment_article_item" />
     <fragment
         android:id="@+id/listOfNews"
-        android:name="com.sknikod.standapp.android.ui.ListOfNewsFragment"
+        android:name="com.sknikod.standapp.android.ui.articlesNews.ListOfNewsFragment"
         android:label="fragment_list_of_news"
         tools:layout="@layout/fragment_list_of_news" >
         <action

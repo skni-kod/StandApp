@@ -52,6 +52,10 @@ kotlin {
             dependencies {
                 with(Deps.Ktor) {
                     implementation(test)
+
+                }
+                with(Deps.Koin){
+                   // implementation(junit5)
                 }
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
                 implementation(kotlin("test"))
