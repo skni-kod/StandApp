@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/listOfNews"
+        android:id="@+id/news"
         android:enabled="true"
         android:icon="@drawable/baseline_star_24"
         android:contentDescription="@string/menu_cd_news"
         android:title="@string/menu_title_news"/>
     <item
-        android:id="@+id/listOfArticles"
+        android:id="@+id/articles"
         android:enabled="true"
         android:icon="@drawable/baseline_star_24"
         android:contentDescription="@string/menu_cd_articles"

@@ -9,7 +9,7 @@
         android:id="@+id/listOfProjects"
         android:name="com.sknikod.standapp.android.ui.projects.ListOfProjectsFragment"
         android:label="fragment_list_of_projects"
-        tools:layout="@layout/fragment_list_of_projects" >
+        tools:layout="@layout/fragment_list_projects" >
         <action
             android:id="@+id/action_listOfProjects_to_projectItem"
             app:destination="@id/projectItem" />
@@ -18,7 +18,7 @@
         android:id="@+id/projectItem"
         android:name="com.sknikod.standapp.android.ui.projects.ProjectItemFragment"
         android:label="fragment_project_item"
-        tools:layout="@layout/fragment_project_item" >
+        tools:layout="@layout/fragment_project" >
         <argument
             android:name="id"
             app:argType="integer"

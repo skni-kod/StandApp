@@ -6,7 +6,7 @@
     android:orientation="vertical"
     >
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card"
+            android:id="@+id/item_project_card"
             android:layout_gravity="center"
             android:layout_width="350dp"
             android:layout_height="wrap_content"

@@ -9,33 +9,29 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sknikod.standapp.android.R
-import com.sknikod.standapp.domain.model.Project
+import com.sknikod.standapp.domain.model.Article
 
-class ProjectAdapter(private val data: List<Project>) :
-    RecyclerView.Adapter<ProjectAdapter.ViewHolder>() {
+class NewsAdapter(private val data: List<Article>) :
+    RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView
-        val section: TextView
+        val data: TextView
         val text: TextView
         var id: Int? = null
         init {
-            // Define click listener for the ViewHolder's View.
-            title = view.findViewById(R.id.item_project_title)
-            section = view.findViewById(R.id.item_project_section)
-            text = view.findViewById(R.id.item_project_text)
+            title = view.findViewById(R.id.item_article_news_title)
+            data = view.findViewById(R.id.item_article_news_data)
+            text = view.findViewById(R.id.item_article_news_text)
 
-            view.findViewById<CardView>(R.id.item_project_card).setOnClickListener {
-                view.findNavController().navigate(
-                    R.id.action_listOfProjects_to_projectItem,
-                    args = bundleOf("id" to id)
-                )
+            view.findViewById<CardView>(R.id.item_article_news_card).setOnClickListener {
+                view.findNavController().navigate(R.id.newsItem, args = bundleOf("id" to id))
             }
         }
     }
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_project, viewGroup, false)
+            .inflate(R.layout.item_article_news, viewGroup, false)
 
         return ViewHolder(view)
     }
@@ -43,7 +39,7 @@ class ProjectAdapter(private val data: List<Project>) :
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.title.text = data[position].title
-        viewHolder.section.text = data[position].section.name
+        viewHolder.data.text = data[position].creationDate
         viewHolder.text.text = data[position].text
         viewHolder.id = data[position].id
     }

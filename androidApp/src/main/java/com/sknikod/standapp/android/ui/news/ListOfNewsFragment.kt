@@ -1,4 +1,4 @@
-package com.sknikod.standapp.android.ui.projects
+package com.sknikod.standapp.android.ui.news
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,32 +10,39 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sknikod.standapp.android.R
-import com.sknikod.standapp.android.ui.adapters.ProjectAdapter
+import com.sknikod.standapp.android.ui.adapters.NewsAdapter
+import com.sknikod.standapp.android.ui.articles.ArticleViewModel
 import com.sknikod.standapp.android.uti.FragmentBase
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class ListOfProjectsFragment : FragmentBase() {
-    private val viewModel: ProjectViewModel by inject()
-    private val projectList = viewModel.listProjects
-    lateinit var adapter: ProjectAdapter
+class ListOfNewsFragment : FragmentBase() {
+    private val viewModel: ArticleViewModel by inject()
+    private val articleList = viewModel.listArticles
+    lateinit var adapter: NewsAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list_projects, container, false)
-        val rvContacts = view.findViewById<RecyclerView>(R.id.rv_projects)
-        if (projectList.value !is com.sknikod.standapp.uti.Result.Success) {
+        val view = inflater.inflate(R.layout.fragment_list_articles, container, false)
+        val rvContacts = view.findViewById<RecyclerView>(R.id.rv_articles)
+        if (articleList.value !is com.sknikod.standapp.uti.Result.Success) {
             viewModel.getListProjects()
         }
         lifecycleScope.launch {
-            projectList.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED).collect {
+            articleList.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED).collect {
                 when (it) {
                     is com.sknikod.standapp.uti.Result.Success ->
                         {
-                            adapter = ProjectAdapter(projectList.value.value ?: listOf())
+                            adapter = NewsAdapter(
+                                articleList.value.value?.filter { it.group != "News" } ?: listOf()
+                            )
                             rvContacts?.adapter = adapter
                             rvContacts?.layoutManager = LinearLayoutManager(context)
                         }

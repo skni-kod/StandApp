@@ -40,6 +40,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("com.github.mukeshsolanki:MarkdownView-Android:2.0.0")
     implementation("com.google.android.material:compose-theme-adapter:1.1.16")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     // Koin for Android
 
     with(Deps.Koin) {

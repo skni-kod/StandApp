@@ -1,4 +1,4 @@
-package com.sknikod.standapp.android.ui.projects
+package com.sknikod.standapp.android.ui.articles
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,9 +16,10 @@ import com.sknikod.standapp.android.R
 import com.sknikod.standapp.android.uti.FragmentBase
 import org.koin.android.ext.android.inject
 
-class ProjectItemFragment : FragmentBase() {
-    private val viewModel: ProjectViewModel by inject()
-    private val projectList = viewModel.listProjects
+
+class ArticleItemFragment : FragmentBase() {
+    private val viewModel: ArticleViewModel by inject()
+    private val projectArticle = viewModel.listArticles
 
 
 
@@ -27,13 +28,13 @@ class ProjectItemFragment : FragmentBase() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_project, null, false)
+        val view = inflater.inflate(R.layout.fragment_article, null, false)
 
-        val markdown = view?.findViewById<ComposeView>(R.id.web_view_project)
+        val markdown = view?.findViewById<ComposeView>(R.id.web_view_article)
         lifecycleScope.launchWhenCreated {
             viewModel.getListProjects()
 
-            projectList.collect { data ->
+            projectArticle.collect { data ->
                 when (data) {
                     is com.sknikod.standapp.uti.Result.Success -> {
                         val projectItem = data.value?.find {
@@ -65,6 +66,5 @@ class ProjectItemFragment : FragmentBase() {
         }
         return view
     }
-
 
 }

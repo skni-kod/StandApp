@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:label="@string/menu_title_projects"
     android:orientation="vertical"
     tools:context=".ui.projects.ListOfProjectsFragment">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProjects"
+        android:id="@+id/rv_projects"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+
+        />
 </LinearLayout>

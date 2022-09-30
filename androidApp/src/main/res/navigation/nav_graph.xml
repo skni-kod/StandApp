@@ -7,29 +7,11 @@
 
 
     <include app:graph="@navigation/projects" />
-    <fragment
-        android:id="@+id/listOfArticles"
-        android:name="com.sknikod.standapp.android.ui.articlesNews.ListOfArticlesFragment"
-        android:label="fragment_list_of_articles"
-        tools:layout="@layout/fragment_list_of_articles" >
-        <action
-            android:id="@+id/action_listOfArticles_to_articleItem"
-            app:destination="@id/articleItem" />
-    </fragment>
-    <fragment
-        android:id="@+id/articleItem"
-        android:name="com.sknikod.standapp.android.ui.articlesNews.ArticleItemFragment"
-        android:label="fragment_article_item"
-        tools:layout="@layout/fragment_article_item" />
-    <fragment
-        android:id="@+id/listOfNews"
-        android:name="com.sknikod.standapp.android.ui.articlesNews.ListOfNewsFragment"
-        android:label="fragment_list_of_news"
-        tools:layout="@layout/fragment_list_of_news" >
-        <action
-            android:id="@+id/action_listOfNews_to_articleItem"
-            app:destination="@id/articleItem" />
-    </fragment>
+    <include app:graph="@navigation/articles" />
+    <include app:graph="@navigation/news" />
+
+
+
     <include app:graph="@navigation/account" />
 
 </navigation>

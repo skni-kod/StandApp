@@ -8,5 +8,5 @@
     <string name="menu_cd_articles">Artykuły</string>
     <string name="menu_cd_projects">Projekty</string>
     <string name="menu_cd_account">Konto</string>
-
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

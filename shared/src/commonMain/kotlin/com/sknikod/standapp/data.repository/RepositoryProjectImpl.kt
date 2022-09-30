@@ -20,7 +20,4 @@ class RepositoryProjectImpl(client: RestApiClient) : Repository(client), Reposit
             client.getProject(id).body()
         }
     }
-
-
-
 }

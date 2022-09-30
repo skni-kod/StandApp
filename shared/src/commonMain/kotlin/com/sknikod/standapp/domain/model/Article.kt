@@ -1,7 +1,9 @@
 package com.sknikod.standapp.domain.model
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Article(
     val alias: String,
     val authors: List<Author>,

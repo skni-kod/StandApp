@@ -13,7 +13,7 @@ import io.ktor.serialization.kotlinx.json.*
 class RestApiClientKtorImpl : RestApiClient, KtorClient {
     override val client: HttpClient
     override val clientToken: HttpClient
-    constructor(client: HttpClientEngine, clientToken: HttpClientEngine,) {
+    constructor(client: HttpClientEngine, clientToken: HttpClientEngine) {
         this.client = HttpClient(client) {
             install(ContentNegotiation) {
                 json()
@@ -26,28 +26,35 @@ class RestApiClientKtorImpl : RestApiClient, KtorClient {
         }
     }
     constructor() {
-        client = HttpClient() {
+        client = HttpClient {
             install(ContentNegotiation) {
                 json()
             }
         }
-        clientToken = HttpClient() {
+        clientToken = HttpClient {
             install(ContentNegotiation) {
                 json()
             }
         }
     }
 
-    override suspend fun getListOfProjects(): HttpResponse = client.get(Const.ApiUrl.BACKEND.projects().content)
+    override suspend fun getListOfProjects(): HttpResponse = client.get(
+        Const.ApiUrl.BACKEND.projects().content
+    )
 
-    override suspend fun getProject(id: Int): HttpResponse =
-        client.get(Const.ApiUrl.BACKEND.projects().specified(id).content)
+    override suspend fun getProject(id: Int): HttpResponse = client.get(
+        Const.ApiUrl.BACKEND.projects().specified(id).content
+    )
 
-    override suspend fun getListOfArticles(): HttpResponse = client.get(Const.ApiUrl.BACKEND.articles().content)
+    override suspend fun getListOfArticles(): HttpResponse = client.get(
+        Const.ApiUrl.BACKEND.articles().content
+    )
 
-    override suspend fun getArticles(id: Int): HttpResponse =
-        client.get(Const.ApiUrl.BACKEND.articles().specified(id).content)
+    override suspend fun getArticles(id: Int): HttpResponse = client.get(
+        Const.ApiUrl.BACKEND.articles().specified(id).content
+    )
 
-    override suspend fun getImage(path: String): HttpResponse =
-        client.get(Const.ApiUrl.MAIN.image(path).content)
+    override suspend fun getImage(path: String): HttpResponse = client.get(
+        Const.ApiUrl.MAIN.image(path).content
+    )
 }

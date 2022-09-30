@@ -2,6 +2,7 @@ package com.sknikod.standapp.android.ui.projects
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sknikod.standapp.android.uti.changeList
 import com.sknikod.standapp.domain.model.Project
 import com.sknikod.standapp.domain.repository.RepositoryProject
 import com.sknikod.standapp.uti.onFailure
@@ -19,8 +20,17 @@ class ProjectViewModel(private val repositoryProject: RepositoryProject) : ViewM
     fun getListProjects() {
         viewModelScope.launch {
             _listProjects.emit(com.sknikod.standapp.uti.Result.Loading())
-            repositoryProject.getListOfProjects().onSuccess {
-                _listProjects.emit(com.sknikod.standapp.uti.Result.Success(it))
+            repositoryProject.getListOfProjects().onSuccess { list ->
+                _listProjects.emit(
+                    com.sknikod.standapp.uti.Result.Success(
+                        list.toMutableList().changeList {
+                            it.copy(
+                                //creationDate = it.creationDate.substringBefore("T"),
+                                text = it.text.substringBefore("---readmore---").plus("...")
+                            )
+                        }
+                    )
+                )
             }.onFailure {
                 _listProjects.emit(com.sknikod.standapp.uti.Result.Error(it))
             }

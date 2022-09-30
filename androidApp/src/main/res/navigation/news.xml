@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/listOfNews"
+    android:id="@+id/news">
+    <fragment
+        android:id="@+id/listOfNews"
+        android:name="com.sknikod.standapp.android.ui.news.ListOfNewsFragment"
+        android:label="fragment_list_of_news"
+        tools:layout="@layout/fragment_list_news" >
+        <action
+            android:id="@+id/action_listOfNews_to_articleItem"
+            app:destination="@id/newsItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsItem"
+        android:name="com.sknikod.standapp.android.ui.news.NewsItemFragment"
+        android:label="fragment_article_item"
+        tools:layout="@layout/fragment_article" />
+</navigation>
