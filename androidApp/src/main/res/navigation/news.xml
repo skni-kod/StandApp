@@ -6,7 +6,7 @@
     android:id="@+id/news">
     <fragment
         android:id="@+id/listOfNews"
-        android:name="com.sknikod.standapp.android.ui.news.ListOfNewsFragment"
+        android:name="com.sknikod.standapp.android.ui.news.ListNewsFragment"
         android:label="fragment_list_of_news"
         tools:layout="@layout/fragment_list_news" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/newsItem"
-        android:name="com.sknikod.standapp.android.ui.news.NewsItemFragment"
+        android:name="com.sknikod.standapp.android.ui.news.ItemNewsFragment"
         android:label="fragment_article_item"
         tools:layout="@layout/fragment_article" />
 </navigation>

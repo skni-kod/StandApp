@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listOfProjects"
-        android:name="com.sknikod.standapp.android.ui.projects.ListOfProjectsFragment"
+        android:name="com.sknikod.standapp.android.ui.projects.ListProjectsFragment"
         android:label="fragment_list_of_projects"
         tools:layout="@layout/fragment_list_projects" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/projectItem"
-        android:name="com.sknikod.standapp.android.ui.projects.ProjectItemFragment"
+        android:name="com.sknikod.standapp.android.ui.projects.ItemProjectFragment"
         android:label="fragment_project_item"
         tools:layout="@layout/fragment_project" >
         <argument

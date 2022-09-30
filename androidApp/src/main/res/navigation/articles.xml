@@ -6,7 +6,7 @@
     app:startDestination="@id/listOfArticles">
     <fragment
         android:id="@+id/listOfArticles"
-        android:name="com.sknikod.standapp.android.ui.articles.ListOfArticlesFragment"
+        android:name="com.sknikod.standapp.android.ui.articles.ListArticlesFragment"
         android:label="fragment_list_of_articles"
         tools:layout="@layout/fragment_list_articles" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/articleItem"
-        android:name="com.sknikod.standapp.android.ui.articles.ArticleItemFragment"
+        android:name="com.sknikod.standapp.android.ui.articles.ItemArticleFragment"
         android:label="fragment_article_item"
         tools:layout="@layout/fragment_article" />
 

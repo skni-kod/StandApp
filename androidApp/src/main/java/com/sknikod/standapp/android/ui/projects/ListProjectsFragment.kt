@@ -15,7 +15,7 @@ import com.sknikod.standapp.android.uti.FragmentBase
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class ListOfProjectsFragment : FragmentBase() {
+class ListProjectsFragment : FragmentBase() {
     private val viewModel: ProjectViewModel by inject()
     private val projectList = viewModel.listProjects
     lateinit var adapter: ProjectAdapter

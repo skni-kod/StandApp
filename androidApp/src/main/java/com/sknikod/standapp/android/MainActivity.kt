@@ -1,14 +1,11 @@
 package com.sknikod.standapp.android
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.sknikod.standapp.android.ui.projects.ProjectViewModel
-import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 

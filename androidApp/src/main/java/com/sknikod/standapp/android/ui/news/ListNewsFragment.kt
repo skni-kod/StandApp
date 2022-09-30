@@ -1,4 +1,4 @@
-package com.sknikod.standapp.android.ui.articles
+package com.sknikod.standapp.android.ui.news
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,15 +10,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sknikod.standapp.android.R
-import com.sknikod.standapp.android.ui.adapters.ArticleAdapter
+import com.sknikod.standapp.android.ui.adapters.NewsAdapter
 import com.sknikod.standapp.android.uti.FragmentBase
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class ListOfArticlesFragment : FragmentBase() {
-    private val viewModel: ArticleViewModel by inject()
-    private val articleList = viewModel.listArticles
-    lateinit var adapter: ArticleAdapter
+class ListNewsFragment : FragmentBase() {
+    private val viewModel: NewsViewModel by inject()
+    private val articleList = viewModel.listNews
+    lateinit var adapter: NewsAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,11 +35,13 @@ class ListOfArticlesFragment : FragmentBase() {
             viewModel.getListProjects()
         }
         lifecycleScope.launch {
-            articleList.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED).collect {
-                when (it) {
+            articleList.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED).collect { listArticles ->
+                when (listArticles) {
                     is com.sknikod.standapp.uti.Result.Success ->
                         {
-                            adapter = ArticleAdapter(articleList.value.value ?: listOf())
+                            adapter = NewsAdapter(
+                                articleList.value.value?.filter { it.group != "News" } ?: listOf()
+                            )
                             rvContacts?.adapter = adapter
                             rvContacts?.layoutManager = LinearLayoutManager(context)
                         }

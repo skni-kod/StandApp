@@ -13,16 +13,19 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class NewsViewModel(private val repositoryArticle: RepositoryArticle) : ViewModel() {
-    private val _listArticles = MutableStateFlow<Result<List<Article>>>(
+    private val _listNews = MutableStateFlow<Result<List<Article>>>(
         Result.Init()
     )
-    val listArticles: StateFlow<Result<List<Article>>> = _listArticles
-
+    val listNews: StateFlow<Result<List<Article>>> = _listNews
+    private val _news = MutableStateFlow<Result<Article>>(
+        Result.Init()
+    )
+    val news: StateFlow<Result<Article>> = _news
     fun getListProjects() {
         viewModelScope.launch {
-            _listArticles.emit(Result.Loading())
+            _listNews.emit(Result.Loading())
             repositoryArticle.getListOfArticles().onSuccess { list ->
-                _listArticles.emit(
+                _listNews.emit(
                     Result.Success(
                         list.toMutableList().changeList {
                             it.copy(
@@ -33,7 +36,25 @@ class NewsViewModel(private val repositoryArticle: RepositoryArticle) : ViewMode
                     )
                 )
             }.onFailure {
-                _listArticles.emit(Result.Error(it))
+                _listNews.emit(Result.Error(it))
+            }
+        }
+    }
+    fun getProject(id: Int) {
+        viewModelScope.launch {
+            _news.emit(Result.Loading())
+            repositoryArticle.getArticle(id).onSuccess { item ->
+                _news.emit(
+                    Result.Success(
+                        item.copy(
+
+                            text = item.text.replace("---readmore---", "")
+                        )
+
+                    )
+                )
+            }.onFailure {
+                _news.emit(Result.Error(it))
             }
         }
     }

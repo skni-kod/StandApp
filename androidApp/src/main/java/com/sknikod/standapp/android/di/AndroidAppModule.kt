@@ -14,7 +14,6 @@ object AndroidAppModule {
         viewModelOf(::NewsViewModel)
         viewModelOf(::AccountViewModel)
         viewModelOf(::ArticleViewModel)
-
     }
     val modules = listOf<Module>(client)
 }

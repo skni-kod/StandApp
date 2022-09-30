@@ -1,4 +1,4 @@
-package com.sknikod.standapp.android.ui.news
+package com.sknikod.standapp.android.ui.articles
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sknikod.standapp.android.R
-import com.sknikod.standapp.android.ui.adapters.NewsAdapter
-import com.sknikod.standapp.android.ui.articles.ArticleViewModel
+import com.sknikod.standapp.android.ui.adapters.ArticleAdapter
 import com.sknikod.standapp.android.uti.FragmentBase
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class ListOfNewsFragment : FragmentBase() {
+class ListArticlesFragment : FragmentBase() {
     private val viewModel: ArticleViewModel by inject()
     private val articleList = viewModel.listArticles
-    lateinit var adapter: NewsAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    lateinit var adapter: ArticleAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,9 +35,7 @@ class ListOfNewsFragment : FragmentBase() {
                 when (it) {
                     is com.sknikod.standapp.uti.Result.Success ->
                         {
-                            adapter = NewsAdapter(
-                                articleList.value.value?.filter { it.group != "News" } ?: listOf()
-                            )
+                            adapter = ArticleAdapter(articleList.value.value ?: listOf())
                             rvContacts?.adapter = adapter
                             rvContacts?.layoutManager = LinearLayoutManager(context)
                         }
