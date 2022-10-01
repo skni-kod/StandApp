@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,8 +12,12 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		5B90C7F983292E4B4A201868 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759D536E1CBB10AAB6EE635 /* Pods_iosApp.framework */; };
 		6F15E1A228D9B32800943E59 /* CardProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F15E1A128D9B32800943E59 /* CardProjectView.swift */; };
+		6F888C8A28E8D293009C34C1 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F888C8928E8D292009C34C1 /* ArrayExt.swift */; };
 		6FC328C328D9DC8600A8E70B /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC328C228D9DC8600A8E70B /* HTMLStringView.swift */; };
 		6FC328C528D9DCCF00A8E70B /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC328C428D9DCCF00A8E70B /* ColorExt.swift */; };
+		6FD136F828E7D33A00D23092 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6FD136F728E7D33A00D23092 /* MarkdownUI */; };
+		6FD1370728E7DE4000D23092 /* MarkDownHtml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD1370628E7DE4000D23092 /* MarkDownHtml.swift */; };
+		6FD1370928E8142700D23092 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD1370828E8142700D23092 /* StringExt.swift */; };
 		6FDFBFA928D1A4C200D21379 /* NavigationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFA828D1A4C200D21379 /* NavigationTabView.swift */; };
 		6FDFBFAB28D1A4E800D21379 /* ListOfProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFAA28D1A4E800D21379 /* ListOfProjectsView.swift */; };
 		6FDFBFAD28D1A4F700D21379 /* ListOfNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDFBFAC28D1A4F700D21379 /* ListOfNewsView.swift */; };
@@ -31,8 +35,11 @@
 		5759D536E1CBB10AAB6EE635 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D73350B1BF2E200094FEBCE /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6F15E1A128D9B32800943E59 /* CardProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardProjectView.swift; sourceTree = "<group>"; };
+		6F888C8928E8D292009C34C1 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		6FC328C228D9DC8600A8E70B /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
 		6FC328C428D9DCCF00A8E70B /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		6FD1370628E7DE4000D23092 /* MarkDownHtml.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownHtml.swift; sourceTree = "<group>"; };
+		6FD1370828E8142700D23092 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		6FDFBFA828D1A4C200D21379 /* NavigationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabView.swift; sourceTree = "<group>"; };
 		6FDFBFAA28D1A4E800D21379 /* ListOfProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProjectsView.swift; sourceTree = "<group>"; };
 		6FDFBFAC28D1A4F700D21379 /* ListOfNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfNewsView.swift; sourceTree = "<group>"; };
@@ -50,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B90C7F983292E4B4A201868 /* Pods_iosApp.framework in Frameworks */,
+				6FD136F828E7D33A00D23092 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,8 +83,11 @@
 		6F15E1A328D9DBB000943E59 /* uti */ = {
 			isa = PBXGroup;
 			children = (
+				6F888C8928E8D292009C34C1 /* ArrayExt.swift */,
 				6FC328C228D9DC8600A8E70B /* HTMLStringView.swift */,
 				6FC328C428D9DCCF00A8E70B /* ColorExt.swift */,
+				6FD1370628E7DE4000D23092 /* MarkDownHtml.swift */,
+				6FD1370828E8142700D23092 /* StringExt.swift */,
 			);
 			path = uti;
 			sourceTree = "<group>";
@@ -193,6 +204,9 @@
 			dependencies = (
 			);
 			name = iosApp;
+			packageProductDependencies = (
+				6FD136F728E7D33A00D23092 /* MarkdownUI */,
+			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +235,9 @@
 				Base,
 			);
 			mainGroup = 7555FF72242A565900829871;
+			packageReferences = (
+				6FD136F628E7D33A00D23092 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -273,15 +290,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F15E1A228D9B32800943E59 /* CardProjectView.swift in Sources */,
+				6FD1370928E8142700D23092 /* StringExt.swift in Sources */,
 				6FC328C528D9DCCF00A8E70B /* ColorExt.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				6FC328C328D9DC8600A8E70B /* HTMLStringView.swift in Sources */,
 				6FDFBFAB28D1A4E800D21379 /* ListOfProjectsView.swift in Sources */,
 				6FDFBFA928D1A4C200D21379 /* NavigationTabView.swift in Sources */,
 				6FDFBFB428D1A55800D21379 /* ArticleView.swift in Sources */,
+				6F888C8A28E8D293009C34C1 /* ArrayExt.swift in Sources */,
 				6FDFBFAD28D1A4F700D21379 /* ListOfNewsView.swift in Sources */,
 				6FDFBFAF28D1A50600D21379 /* ListOfArticlesView.swift in Sources */,
 				6FDFBFB628D1A56600D21379 /* ProjectView.swift in Sources */,
+				6FD1370728E7DE4000D23092 /* MarkDownHtml.swift in Sources */,
 				6FDFBFB128D1A51500D21379 /* UserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +487,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6FD136F628E7D33A00D23092 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6FD136F728E7D33A00D23092 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FD136F628E7D33A00D23092 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }

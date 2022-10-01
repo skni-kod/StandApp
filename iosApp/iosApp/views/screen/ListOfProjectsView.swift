@@ -11,11 +11,9 @@ import shared
 
 @MainActor
 struct ListOfProjectsView: View {
-    
-    // meybe transfer to usecase?
-    var getProjects = {
-        try await shared.KoinWrapper().greet()
-    }
+    let repo = shared.KoinWrapper().getRepositoryProject()
+   
+   
     @State var listOfProjects : [Project] = []
     var body: some View {
         NavigationView{
@@ -43,9 +41,14 @@ struct ListOfProjectsView: View {
         .onAppear{
             
             Task{
-                try await getProjects().onSuccess(action:{
-                    value in listOfProjects = value as? [Project] ?? []
-                    
+                try await repo.getListOfProjects().onSuccess(action:{
+                    value in
+                    var custom = value as? [Project] ?? []
+                   let change = custom.changeArray(value: { (pro:Project)->Project in
+                        let project=Project(authors: pro.authors, creationDate: pro.creationDate, creator: pro.creator, gallery: pro.gallery, id: pro.id, links: pro.links, publicationDate: pro.publicationDate, section: pro.section, text: pro.text.replacingOccurrences(of: "---readmore---", with: " "), title: pro.title)
+                        return project
+                    })
+                    listOfProjects = change
                 })
             }
         }

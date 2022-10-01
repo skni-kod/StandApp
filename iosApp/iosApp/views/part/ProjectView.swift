@@ -10,14 +10,33 @@ import SwiftUI
 import WebKit
 import SwiftUI
 import shared
+import CommonMark
+import MarkdownUI
+
 struct ProjectView: View {
     let data:Project
+    @State var offset: CGPoint = .zero
+    @State private var webViewHeight: CGFloat = 0
+    let classi : MarkDownHtml
     init(data:Project){
         self.data=data
         UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Arial", size: 16)!]
+        classi = MarkDownHtml(text: data.text)
+
     }
     var body: some View {
-        HTMLStringView(htmlContent: "<p>\(data.text)</p>").navigationBarTitle(  data.title , displayMode: .inline )
+      
+        ScrollView{
+           
+            Markdown(classi.markdown)
+          
+            HTMLStringView(dynamicHeight: $webViewHeight, text: classi.html)
+                            .padding(.horizontal)
+                            .frame(height: webViewHeight)
+            
+            
+        }
+       
     }
 }
 

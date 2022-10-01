@@ -9,13 +9,16 @@ sealed class Result<T>(val value: T?) {
     class Error<T>(val throwable: Throwable) : Result<T>(null)
 }
 inline fun <T> Result<T>.onFailure(action: (exception: Throwable) -> Unit): Result<T> {
-
-    if (this is Result.Error) action((this as Result.Error).throwable)
+    if (this is Result.Error) action(this.throwable)
     return this
 }
 
 inline fun <T> Result<T>.onSuccess(action: (value: T) -> Unit): Result<T> {
-
     if (this is Result.Success) action(value as T)
+    return this
+}
+
+inline fun <T> Result<T>.onLoading(action: () -> Unit): Result<T> {
+    if (this is Result.Loading) action()
     return this
 }
