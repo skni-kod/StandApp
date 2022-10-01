@@ -9,49 +9,48 @@
 import SwiftUI
 import shared
 
-@MainActor
+
 struct ListOfProjectsView: View {
-    let repo = shared.KoinWrapper().getRepositoryProject()
-   
-   
-    @State var listOfProjects : [Project] = []
+    @StateObject var model = ProjectFilter()
     var body: some View {
         NavigationView{
             
-            
-            
-            List(){
-                
-                ForEach(listOfProjects , id: \.self){ data in
-                    NavigationLink(destination: ProjectView(data: data)) {
-                        VStack(){
+            switch model.status {
+            case is ResultInit<AnyObject>:
+                Spacer().onAppear(perform: {
+                    model.fetch()
+                })
+            case is ResultLoading<AnyObject>:
+                ProgressView()
+            case is ResultSuccess<AnyObject>:
+                List(){
+                    
+                    ForEach(model.projects ?? [] , id: \.self){ data in
+                        NavigationLink(destination: ProjectView(data: data)) {
+                            VStack(){
+                                
+                                CardProjectView(title: data.title, sectionName: data.section.name, text: data.text)
+                            }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                             
-                            CardProjectView(title: data.title, sectionName: data.section.name, text: data.text)
-                        }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-                        
+                        }
                     }
+                    
                 }
-                
+                .listStyle(InsetListStyle())
+                .navigationTitle( "Nasze projekty"  )
+            default:
+                Spacer()
             }
-            .listStyle(InsetListStyle())
-            .navigationTitle( "Nasze projekty"  )
+          
+             
+                
+            
+           
+            
             
         }
         .navigationViewStyle(DefaultNavigationViewStyle())
-        .onAppear{
-            
-            Task{
-                try await repo.getListOfProjects().onSuccess(action:{
-                    value in
-                    var custom = value as? [Project] ?? []
-                   let change = custom.changeArray(value: { (pro:Project)->Project in
-                        let project=Project(authors: pro.authors, creationDate: pro.creationDate, creator: pro.creator, gallery: pro.gallery, id: pro.id, links: pro.links, publicationDate: pro.publicationDate, section: pro.section, text: pro.text.replacingOccurrences(of: "---readmore---", with: " "), title: pro.title)
-                        return project
-                    })
-                    listOfProjects = change
-                })
-            }
-        }
+        
         
     }
 }
