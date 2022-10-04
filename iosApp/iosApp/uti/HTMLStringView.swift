@@ -13,12 +13,11 @@ import SwiftUI
 
 struct HTMLStringView: UIViewRepresentable {
     @Binding var dynamicHeight: CGFloat
-    var webview: WKWebView = WKWebView()
     let text:String
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
- 
+    
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
         webView.navigationDelegate = context.coordinator    // << delegate !!
@@ -26,8 +25,24 @@ struct HTMLStringView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        let htmlStart1 = "<meta name='viewport' content='width=device-width, shrink-to-fit=YES' initial-scale='1.0' maximum-scale='1.0' minimum-scale='1.0' user-scalable='no'></HEAD><BODY>"
-        let htmlEnd1 = ""
+        let htmlStart1 = """
+            <html><head><meta name=\"viewport\" content=\"width=device-width,minimum-scale=1.0, maximum-scale=1.0\"/>
+ <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+        }
+    </style>
+            </head><body>
+"""
+        let htmlEnd1 = "</body></html>"
         
         let htmlStart = "<div style=\"font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif\">"
         let htmlEnd = "</div>"
@@ -42,12 +57,13 @@ struct HTMLStringView: UIViewRepresentable {
             self.parent = parent
         }
         
+        
+        
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             /*let css = "body { background-color : #ffffff }"
              let js = "var style = document.createElement('style'); style.innerHTML = '\(css)'; document.head.appendChild(style);"
              
              webView.evaluateJavaScript(js, completionHandler: nil)   // << here !!*/
-            
             
             if webView.isLoading == false {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -58,10 +74,13 @@ struct HTMLStringView: UIViewRepresentable {
                                     guard let height = height as? CGFloat else { return }
                                     webView.frame.size.height = height
                                     self.parent.dynamicHeight = height as! CGFloat
-                                    webView.sizeToFit()
+                                    
+                                    
+                                    
                                 }
                             })
                         }
+                        webView.sizeToFit()
                     })
                 }
             }

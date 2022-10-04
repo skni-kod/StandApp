@@ -37,15 +37,6 @@
       }
     },
     {
-      "identity" : "roomtime",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/RainbowTalaxy/RoomTime",
-      "state" : {
-        "revision" : "fb21f7752d47a485e225d575a04f5f41d3e3ba1b",
-        "version" : "0.1.0"
-      }
-    },
-    {
       "identity" : "swiftcommonmark",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gonzalezreal/SwiftCommonMark",
