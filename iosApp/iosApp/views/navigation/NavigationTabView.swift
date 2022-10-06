@@ -13,26 +13,22 @@ struct NavigationTabView: View {
         TabView {
             ListOfProjectsView( )
                 .tabItem {
-                    Label("Editor", systemImage: "pencil.circle")
-                    Text("Editor")
+                    Label(LocalizedStringKey("projects"), systemImage: "pencil.circle")
+                }
+            
+            ListOfArticlesView()
+                .tabItem {
+                    Label(LocalizedStringKey("articles"), systemImage: "note.text")
                 }
             
             ListOfNewsView()
                 .tabItem {
-                    Label("Notes", systemImage: "note.text")
-                    Text("Notes")
+                    Label(LocalizedStringKey("news"), systemImage: "square.and.arrow.up")
                 }
             
-            ListOfNewsView()
+            UserView()
                 .tabItem {
-                    Label("Share", systemImage: "square.and.arrow.up")
-                    Text("Share")
-                }
-            
-            ListOfNewsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape")
-                    Text("Settings")
+                    Label(LocalizedStringKey("user"), systemImage: "gearshape")
                 }
         }
         .onAppear{

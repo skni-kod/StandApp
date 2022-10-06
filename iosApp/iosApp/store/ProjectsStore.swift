@@ -10,16 +10,13 @@ import Foundation
 import shared
 import SwiftUI
 
-protocol ProjectStore{
-    var projects: [Project]? { get set }
-    var status:Result<AnyObject> { get set }
-    var repository: RepositoryProject { get set }
-}
 
 @MainActor
-class ProjectFilter : ObservableObject & ProjectStore {
+class ListOfProjectStoreImpl : ObservableObject {
     @Published var projects: [Project]?
     @Published var status:Result<AnyObject> = ResultInit()
+    @Published var failure:KotlinThrowable?
+
     var repository = shared.KoinWrapper().getRepositoryProject()
     
     func setUp(projects:[Project]) {
@@ -30,15 +27,24 @@ class ProjectFilter : ObservableObject & ProjectStore {
         })
         self.projects = change
     }
-    func fetch(){
+    func fetch() async{
         status=ResultLoading()
-        Task{
+        do{
             status = try await repository.getListOfProjects().onSuccess(action:{
                 value in
                 self.setUp(projects: value as? [Project] ?? [])
                 
             })
-          
+            .onFailure(action: {
+                value in self.failure=value
+            })
         }
+        
+        catch {
+            status=ResultError(throwable: error as! KotlinThrowable )
+        }
+           
+          
+       
     }
 }

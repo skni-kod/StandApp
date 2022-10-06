@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  iosApp
+
+  Created by RedinPCX on 07/10/2022.
+  Copyright © 2022 orgName. All rights reserved.
+*/
+"projects"= "Projekty";
+"articles"= "Artykuły";
+"news"= "News";
+"user"= "Użytkownik";
+"our_projects"= "Nasze projekty";
+"our_articles"= "Artykuły";
+"our_news"= "Newsy";
+"error"= "Błąd";
+"try_again"="Spróbuj ponownie";
+"cancel"="Anuluj";

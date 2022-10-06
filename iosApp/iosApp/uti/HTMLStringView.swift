@@ -25,7 +25,7 @@ struct HTMLStringView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        let htmlStart1 = """
+        let htmlStart = """
             <html><head><meta name=\"viewport\" content=\"width=device-width,minimum-scale=1.0, maximum-scale=1.0\"/>
  <style>
         * {
@@ -42,12 +42,11 @@ struct HTMLStringView: UIViewRepresentable {
     </style>
             </head><body>
 """
-        let htmlEnd1 = "</body></html>"
+        let htmlEnd = "</body></html>"
         
-        let htmlStart = "<div style=\"font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif\">"
-        let htmlEnd = "</div>"
+     
         
-        uiView.loadHTMLString( htmlStart1 + text + htmlEnd1 , baseURL: nil)
+        uiView.loadHTMLString( htmlStart + text + htmlEnd , baseURL: nil)
     }
     
     class Coordinator: NSObject, WKNavigationDelegate {

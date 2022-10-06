@@ -11,14 +11,19 @@ import shared
 
 
 struct ListOfProjectsView: View {
-    @StateObject var model = ProjectFilter()
+    @StateObject var model = ListOfProjectStoreImpl()
+    @State var errorShow = false
+     let maxAttemptConnect = 2
+    @State var attempt : Int = 0
     var body: some View {
         NavigationView{
             
             switch model.status {
             case is ResultInit<AnyObject>:
                 Spacer().onAppear(perform: {
-                    model.fetch()
+                    Task{
+                         await model.fetch()
+                    }
                 })
             case is ResultLoading<AnyObject>:
                 ProgressView()
@@ -31,15 +36,38 @@ struct ListOfProjectsView: View {
                                 
                                 CardProjectView(title: data.title, sectionName: data.section.name, text: data.text)
                             }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                        
                             
                         }
                     }
                     
                 }
                 .listStyle(InsetListStyle())
-                .navigationTitle( "Nasze projekty"  )
+                .navigationTitle( LocalizedStringKey("our_projects") )
+
+                    
             default:
-                Spacer()
+                if (model.failure != nil && attempt < maxAttemptConnect)  {
+                        
+                    Text("")
+                        .alert(isPresented: $errorShow,content:  {
+                                                Alert(
+                                                    title: Text(LocalizedStringKey("error")),
+                                                    message: Text(model.failure?.message ?? "404"),
+                                                    dismissButton: .default(Text(  attempt < maxAttemptConnect-1 ? LocalizedStringKey("try_again") : LocalizedStringKey("cancel") )) {
+                                                        errorShow=false
+                                                        attempt =  1 + attempt
+                                                         Task{
+                                                            await model.fetch()
+                                                       }
+                                                    }
+                                                )
+                        })
+                        .onAppear{
+                            errorShow=true
+                        }
+                }
+               
             }
           
              
