@@ -112,5 +112,7 @@ internal class RepositoryImplTest {
         val client = RestApiClientKtorImpl(mockClient, mockClientToken)
         val repositoryProjectImpl = RepositoryProjectImpl(client)
         assertEquals(true, repositoryProjectImpl.getListOfProjects().value?.isNotEmpty())
+
+
     }
 }

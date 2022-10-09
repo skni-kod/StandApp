@@ -4,6 +4,7 @@ plugins {
     kotlin("plugin.serialization") version "1.7.10"
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("io.kotest.multiplatform") version "5.0.2"
 }
 version = "1.0"
 
@@ -12,11 +13,11 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    jvm {
+   /* jvm {
         testRuns["test"].executionTask.configure {
-           useJUnitPlatform()
+            useJUnitPlatform()
         }
-    }
+    }*/
     cocoapods {
 
         summary = "Some description for the Shared Module"
@@ -33,14 +34,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                with(Deps.KotlinSerialization){
+                with(Deps.KotlinSerialization) {
                     api(core)
                 }
                 with(Deps.Ktor) {
                     implementation(core)
                     api(Deps.Ktor.negotiation)
                     api(Deps.Ktor.json)
-
                 }
                 with(Deps.Koin) {
                     api(core)
@@ -52,16 +52,23 @@ kotlin {
             dependencies {
                 with(Deps.Ktor) {
                     implementation(test)
-
                 }
-                with(Deps.Koin){
-                   // implementation(junit5)
+                with(Deps.Koin) {
+                    // implementation(junit5)
                 }
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-                implementation(kotlin("test"))
-                implementation("io.mockk:mockk-common:1.12.5")
+            /*    implementation(kotlin("test")) {
+                    exclude("org.jetbrains.kotlin", "kotlin-test-junit")
+                }*/
+
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+
+                    implementation("io.kotest:kotest-property:5.5.1")
+                    implementation("io.kotest:kotest-assertions-core:5.5.1")
             }
         }
+
         val androidMain by getting {
             dependencies {
                 with(Deps.Ktor) {
@@ -103,4 +110,9 @@ android {
         minSdk = 28
         targetSdk = 33
     }
+/*    testOptions {
+        unitTests.all { test ->
+            test.useJUnitPlatform()
+        }
+    }*/
 }
