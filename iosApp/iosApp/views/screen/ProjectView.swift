@@ -17,20 +17,20 @@ struct ProjectView: View {
     let data:Project
     @State var offset: CGPoint = .zero
     @State private var webViewHeight: CGFloat = 0
-    let classi : MarkDownHtml
+    let markDownHtml : MarkDownHtml
     init(data:Project){
         self.data=data
         UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Arial", size: 16)!]
-        classi = MarkDownHtml(text: data.text)
+        markDownHtml = MarkDownHtml(text: data.text)
 
     }
     var body: some View {
       
         ScrollView{
            
-            Markdown(classi.markdown)
+            Markdown(markDownHtml.markdown)
           
-            HTMLStringView(dynamicHeight: $webViewHeight, text: classi.html)
+            HTMLStringView(dynamicHeight: $webViewHeight, text: markDownHtml.html)
                             .padding(.horizontal)
                             .frame(height: webViewHeight)
             

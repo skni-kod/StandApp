@@ -30,10 +30,10 @@ struct ListOfArticlesView: View {
                 List(){
                     
                     ForEach(model.article ?? [] , id: \.self){ data in
-                        NavigationLink(destination: NewsView()) {
+                        NavigationLink(destination: NewsView(data: data)) {
                             VStack(){
                                 
-                                //CardProjectView(title: data.title, sectionName: data.section.name, text: data.text)
+                                ItemArticleView(title: data.title, date: data.publicationDate, text: data.text)
                             }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                             
                             
@@ -42,7 +42,7 @@ struct ListOfArticlesView: View {
                     
                 }
                 .listStyle(InsetListStyle())
-                .navigationTitle( LocalizedStringKey("our_projects") )
+                .navigationTitle( LocalizedStringKey("our_articles") )
 
                 
             default:

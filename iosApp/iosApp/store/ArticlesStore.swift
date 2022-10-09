@@ -28,7 +28,7 @@ class ListOfArticlesStoreImpl : ObservableObject  {
   
             return news
         })
-        self.article = change
+        self.article = change.filter(  {it in it.group == "News"})
     }
     func fetch() async{
         status=ResultLoading()

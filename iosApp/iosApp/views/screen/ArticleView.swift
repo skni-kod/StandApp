@@ -7,15 +7,41 @@
 //
 
 import SwiftUI
+import WebKit
+import SwiftUI
+import shared
+import CommonMark
+import MarkdownUI
 
 struct ArticleView: View {
+    let data:Article
+    @State var offset: CGPoint = .zero
+    @State private var webViewHeight: CGFloat = 0
+    let markDownHtml : MarkDownHtml
+    init(data:Article){
+        self.data=data
+        UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Arial", size: 16)!]
+        markDownHtml = MarkDownHtml(text: data.text)
+
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+      
+        ScrollView{
+           
+            Markdown(markDownHtml.markdown)
+          
+            HTMLStringView(dynamicHeight: $webViewHeight, text: markDownHtml.html)
+                            .padding(.horizontal)
+                            .frame(height: webViewHeight)
+            
+            
+        }
+       
     }
 }
 
 struct ArticleView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleView()
+        EmptyView()
     }
 }

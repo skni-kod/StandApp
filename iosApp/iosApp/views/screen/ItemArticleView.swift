@@ -1,20 +1,22 @@
 //
-//  CardProjectView.swift
+//  ItemArticleView.swift
 //  iosApp
 //
-//  Created by RedinPCX on 20/09/2022.
+//  Created by RedinPCX on 09/10/2022.
 //  Copyright © 2022 orgName. All rights reserved.
 //
 
 import SwiftUI
+import Foundation
 
-struct CardProjectView: View {
+struct ItemArticleView: View {
     let hardwareScreenSize = UIScreen.main.bounds.size
     
     var title:String
-    var sectionName:String
+    var date:String
     var text:String
     var textReadmore = "---readmore---"
+    var timeStepSign = "T"
     var limitLine=2
     var body: some View {
         ZStack {
@@ -25,15 +27,17 @@ struct CardProjectView: View {
             VStack {
                 HStack{
                     Spacer()
-                    Text("\(sectionName)")
-                        .padding()
-                        .font(.system(size: 8))
+                    if let dataRange = date.range(of: timeStepSign) {
+                        let substring = date[..<dataRange.lowerBound]
+                        Text(substring)
+                            .padding()
+                            .font(.system(size: 8))
+                    }
                 }
-         
                 Text("\(title)")
-                    .font(.title2)
-                    .lineLimit(1)
-                  
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.5)
+                    .padding()
                 
                 if let range = text.range(of: textReadmore) {
                   let substring = text[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
@@ -56,12 +60,6 @@ struct CardProjectView: View {
         }
         .frame(width: hardwareScreenSize.width * 0.8)
     }
-    
-    
 }
 
-struct CardProjectView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardProjectView(title: "test", sectionName: "test", text: "test")
-    }
-}
+

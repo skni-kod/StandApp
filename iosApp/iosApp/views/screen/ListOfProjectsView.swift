@@ -34,7 +34,7 @@ struct ListOfProjectsView: View {
                         NavigationLink(destination: ProjectView(data: data)) {
                             VStack(){
                                 
-                                CardProjectView(title: data.title, sectionName: data.section.name, text: data.text)
+                                ItemProjectView(title: data.title, sectionName: data.section.name, text: data.text)
                             }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                         
                             
